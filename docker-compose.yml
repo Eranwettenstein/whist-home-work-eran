@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+    web1:
+        image: my-web:latest
+        ports:
+            - "5001:80"
+    web2:
+        image: my-web:latest
+        ports:
+          - "5002:80"
+    web3:
+        image: my-web:latest
+        ports:
+          - "5003:80"
+    nginx:
+       build: ./nginx
+       ports:
+       - "9090:80"
+       depends_on:
+        - web1
+        - web2
+        - web3
